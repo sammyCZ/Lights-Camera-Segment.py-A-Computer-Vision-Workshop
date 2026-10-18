@@ -31,6 +31,9 @@ source .venv/bin/activate
 
 3. Install dependencies
 
+pip install -r requirements.txt 
+
+if pip install -r requirements.txt doesn't work: 
 pip install "mediapipe==0.10.14" opencv-python "numpy<2"
 
 (A full requirements.txt with pinned versions is included in this repo —
