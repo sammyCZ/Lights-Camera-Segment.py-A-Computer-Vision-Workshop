@@ -2,8 +2,14 @@
 import cv2
 import mediapipe as mp
 import numpy as np
+import os 
+import sys
+import tempfile
 mp_drawing = mp.solutions.drawing_utils
 mp_selfie_segmentation = mp.solutions.selfie_segmentation
+
+# added for Windows since there is no /tmp
+OUTPUT_DIR = '/tmp' if sys.platform != 'win32' else tempfile.gettempdir()
 
 # For static images:
 IMAGE_FILES = []
@@ -13,6 +19,9 @@ with mp_selfie_segmentation.SelfieSegmentation(
     model_selection=0) as selfie_segmentation:
   for idx, file in enumerate(IMAGE_FILES):
     image = cv2.imread(file)
+    if image is None:
+      print("Could not read image", file)
+      continue
     image_height, image_width, _ = image.shape
     # Convert the BGR image to RGB before processing.
     results = selfie_segmentation.process(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
@@ -27,20 +36,36 @@ with mp_selfie_segmentation.SelfieSegmentation(
     bg_image = np.zeros(image.shape, dtype=np.uint8)
     bg_image[:] = BG_COLOR
     output_image = np.where(condition, fg_image, bg_image)
-    cv2.imwrite('/tmp/selfie_segmentation_output' + str(idx) + '.png', output_image)
+    # changed for both os
+    cv2.imwrite(os.path.join(OUTPUT_DIR, 'selfie_seqmentation_output' + str(idx) + '.png'), output_image)
+    # cv2.imwrite('/tmp/selfie_segmentation_output' + str(idx) + '.png', output_image)
 
 # For webcam input:
 BG_COLOR = (192, 192, 192) # gray
-cap = cv2.VideoCapture(0)
+# added for support. DirectShow works faster 
+if sys.platform == "win32": 
+  cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+else:
+  cap = cv2.VideoCapture(0)
+if not cap.isOpened():
+  raise SystemExit(
+    "Could not open the camera. Close other apps using it and try again."
+  )
+MAX_FAILED_FRAMES = 30
+failed_frames = 0
 with mp_selfie_segmentation.SelfieSegmentation(
     model_selection=1) as selfie_segmentation:
   bg_image = None
   while cap.isOpened():
     success, image = cap.read()
     if not success:
+      failed_frames += 1
       print("Ignoring empty camera frame.")
+      if failed_frames >= MAX_FAILED_FRAMES: 
+        raise SystemExit("Camera stopped returning frames. Exiting...")
       # If loading a video, use 'break' instead of 'continue'.
       continue
+    failed_frames = 0
 
     # Flip the image horizontally for a later selfie-view display, and convert
     # the BGR image to RGB.
@@ -72,3 +97,4 @@ with mp_selfie_segmentation.SelfieSegmentation(
     if cv2.waitKey(5) & 0xFF == 27:
       break
 cap.release()
+cv2.destoryAllWindows()

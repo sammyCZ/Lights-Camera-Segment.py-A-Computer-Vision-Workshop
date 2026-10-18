@@ -4,11 +4,23 @@
 *.env
 
 # --- Operating System Files ---
+# macOS
 .DS_Store
 .AppleDouble
 .LSOverride
+# Windows
 Thumbs.db
+ehthumbs.db 
+desktop.ini
+$RECYCLE.BIN/
+*.lnk
+# Linux
 *.desktop
+
+# --- Python --- 
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
 
 # --- Log Files ---
 *.log
@@ -21,6 +33,10 @@ bower_components/
 .venv/
 env/
 venv/
+
+# --- Editors --- 
+.vscode/
+.idea/
 
 # --- Build and Output Folders ---
 dist/

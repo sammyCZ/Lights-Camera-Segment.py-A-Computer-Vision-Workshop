@@ -1,3 +1,5 @@
+# Requires Python 3.12
+# Windows: 64-bit Intel/AMD
 absl-py==2.5.1
 attrs==26.1.0
 cffi==2.1.1
@@ -13,6 +15,9 @@ mediapipe==0.10.14
 ml_dtypes==0.5.4
 numpy==1.26.4
 opencv-contrib-python==4.11.0.86
+# opencv-python and opencv-contrib-python both provide `cv2`. Keep them on the
+# same version. If you get odd cv2 import errors on Windows, uninstall both and
+# reinstall: pip uninstall -y opencv-python opencv-contrib-python
 opencv-python==4.11.0.86
 opt_einsum==3.4.0
 packaging==26.3
