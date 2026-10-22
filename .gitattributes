@@ -1,0 +1,6 @@
+# Normalize the line endings so that scripts work on both macOS and Window users
+* text=auto 
+*.sh text eol=crlf
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+*.py text eol=lf
