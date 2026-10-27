@@ -11,11 +11,14 @@ mp_selfie_segmentation = mp.solutions.selfie_segmentation
 
 # Path to the "movie scene" clip you want to composite onto.
 # Can be a local file path OR a YouTube link.
-BG_VIDEO_SOURCE = "https://www.youtube.com/watch?v=ODmhPsgqGgQ"
-
+'''
+CUSTOMIZE HERE. CHOOSE ANY YOUTUBE VIDEO OR INCLUDE A PATH TO YOUR OWN MP4 FILE
+'''
+# BG_VIDEO_SOURCE = 'https://www.youtube.com/watch?v=6eRzBNzVohc'
+BG_VIDEO_SOURCE = 'backgrounds/video.mp4'
 
 def resolve_background_source(source):
-    if not source.startswith(("http://", "https://")):
+    if not source.startswith(('http://', 'https://')):
         return source
     print("Downloading YouTube clip via yt-dlp...")
     tmp_path = os.path.join(tempfile.gettempdir(), "selfie2_bg_clip.mp4")

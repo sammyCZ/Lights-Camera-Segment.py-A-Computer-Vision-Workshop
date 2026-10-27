@@ -49,3 +49,4 @@ typing_extensions==4.16.0
 tzdata==2026.5
 urllib3==2.8.0
 yt-dlp==2026.10.26
+yt-dlp-ejs==0.8.0 
