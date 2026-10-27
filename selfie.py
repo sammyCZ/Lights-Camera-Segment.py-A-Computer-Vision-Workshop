@@ -13,7 +13,7 @@ OUTPUT_DIR = '/tmp' if sys.platform != 'win32' else tempfile.gettempdir()
 
 # For static images:
 IMAGE_FILES = []
-BG_COLOR = (192, 192, 192) # gray
+BG_COLOR = (192, 192, 192) # gray 
 MASK_COLOR = (255, 255, 255) # white
 with mp_selfie_segmentation.SelfieSegmentation(
     model_selection=0) as selfie_segmentation:
@@ -41,7 +41,7 @@ with mp_selfie_segmentation.SelfieSegmentation(
     # cv2.imwrite('/tmp/selfie_segmentation_output' + str(idx) + '.png', output_image)
 
 # For webcam input:
-BG_COLOR = (192, 192, 192) # gray
+BG_COLOR = (255, 0, 0) # gray 192, 192, 192
 # added for support. DirectShow works faster 
 if sys.platform == "win32": 
   cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)

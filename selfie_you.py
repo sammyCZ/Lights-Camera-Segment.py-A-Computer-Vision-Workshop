@@ -11,7 +11,7 @@ mp_selfie_segmentation = mp.solutions.selfie_segmentation
 
 # Path to the "movie scene" clip you want to composite onto.
 # Can be a local file path OR a YouTube link.
-BG_VIDEO_SOURCE = "https://www.youtube.com/watch?v=ODmhPsgqGgQ"
+BG_VIDEO_SOURCE = "https://www.youtube.com/watch?v=yUDp8l7rysU"
 
 
 def resolve_background_source(source):
