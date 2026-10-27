@@ -13,7 +13,11 @@ OUTPUT_DIR = '/tmp' if sys.platform != 'win32' else tempfile.gettempdir()
 
 # For static images:
 IMAGE_FILES = []
-BG_COLOR = (192, 192, 192) # gray
+
+'''
+CUSTOMIZE HERE. CHOOSE ANY BACKGROUND COLOR: https://inventwithpython.com/blog/complete-list-tkinter-colors-valid-and-tested.html 
+'''
+BG_COLOR = (192, 192, 192) # gray 
 MASK_COLOR = (255, 255, 255) # white
 with mp_selfie_segmentation.SelfieSegmentation(
     model_selection=0) as selfie_segmentation:
@@ -56,6 +60,13 @@ failed_frames = 0
 with mp_selfie_segmentation.SelfieSegmentation(
     model_selection=1) as selfie_segmentation:
   bg_image = None
+
+  '''
+  CUSTOMIZE HERE. CHOOSE ANY BACKGROUND IMAGE FROM THE REPO OR INCLUDE A PATH TO YOUR OWN
+  '''
+  # bg_image = cv2.imread('backgroundA.jpg')
+  # bg_image = cv2.resize(bg_image, (1920, 1080))
+  
   while cap.isOpened():
     success, image = cap.read()
     if not success:
