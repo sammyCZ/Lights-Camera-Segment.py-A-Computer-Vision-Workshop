@@ -194,21 +194,3 @@ Notes:
 - Make sure you're running 64-bit Python (Windows: 64-bit Intel/AMD) —
   32-bit Python will fail to find prebuilt wheels for several of these
   packages.
-
-## To do
-
-- [x] Add backgroundA.jpg, backgroundB.jpg, backgroundC.jpg, backgroundD.jpg
-  so attendees can swap in real image backgrounds instead of a solid color
-- [ ] Add a couple of short sample background clips (chase scene, dramatic
-  walk) so attendees don't need a YouTube link to try Step 3 --> not sure if will do 
-- [ ] Reconcile the two ways of installing deps (`requirements.txt` vs. the
-  manual `pip install` list in Setup step 3) so there's one source of truth
-
-## Notes
-
-- `model_selection=0` is used for static images (general model), and
-  `model_selection=1` for the webcam loops (landscape model, better for
-  wider shots).
-- `MASK_COLOR` / `BG_COLOR` are BGR tuples, not RGB.
-- `rembg.remove()` returns an RGBA image — save as PNG, not JPEG, or flatten
-  it onto a background first if you need a `.jpg`.
