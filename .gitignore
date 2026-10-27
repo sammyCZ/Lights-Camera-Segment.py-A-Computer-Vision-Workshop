@@ -44,3 +44,6 @@ build/
 out/
 bin/
 obj/
+
+# --- Output file ---
+output_image.png
