@@ -82,6 +82,7 @@ Remake the virtual environment from Part 2, then install each piece by hand:
 pip install "mediapipe==0.10.14" opencv-python "numpy<2"
 pip install rembg
 pip install -U "yt-dlp[default]"
+pip install -U yt-dlp-ejs
 pip install deno
 ```
 
@@ -132,17 +133,17 @@ Look for 2 `CUSTOMIZE HERE` comments in `selfie.py`:
   [color list](https://inventwithpython.com/blog/complete-list-tkinter-colors-valid-and-tested.html)
   has names mapped to values if you don't want to guess numbers.
 - **Background image**: swap the solid color for one of the `background_.jpg`
-  … `backgroundA.jpg` images already in this repo (or your own file) by
+  … `backgrounds/backgroundA.jpg` images already in this repo (or your own file) by
   uncommenting:
 
   ```python
-  bg_image = cv2.imread('backgroundA.jpg')
+  bg_image = cv2.imread('backgrounds/backgroundA.jpg')
   bg_image = cv2.resize(bg_image, (1920, 1080))
   ```
 
   This sits just before the `while` loop on purpose. You load and resize the
   image once, not every frame. Doing it inside the loop re-decodes the file
-  from disk ~30 times a second, which makes higher-resolution files like `backgroundD.jpg`
+  from disk ~30 times a second, which makes higher-resolution files like `backgrounds/backgroundD.jpg`
   noticeably laggier.
   
   If your webcam resolution isn't 1920×1080 (widthxheight), change those two numbers to
@@ -158,8 +159,8 @@ Same live segmentation as Step 2, but instead of a solid color, you're
 composited onto a looping background *video*. Look for the `CUSTOMIZE HERE`
 comment near the top of `selfie_you.py` and set `BG_VIDEO_SOURCE` to either:
 
-- a local video file path (i.e. `"background.mp4"`), or
-- a YouTube link (i.e. `"https://www.youtube.com/watch?v=..."`)
+- a local video file path (i.e. `backgrounds/background.mp4`), or
+- a YouTube link (i.e. `https://www.youtube.com/watch?v=...`)
 
 For YouTube links, `yt-dlp` downloads the clip to a temp file the first time
 you run it, and OpenCV reads frames from that local file from then on, which
