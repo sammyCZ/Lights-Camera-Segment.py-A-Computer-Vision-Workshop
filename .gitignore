@@ -47,3 +47,6 @@ obj/
 
 # --- Output file ---
 output_image.png
+
+# --- file ---
+requirementsOG.txt

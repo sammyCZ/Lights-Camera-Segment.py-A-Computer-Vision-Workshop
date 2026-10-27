@@ -3,7 +3,7 @@ import numpy as np
 from PIL import Image
 
 # Load the input image. The image doesn't support transparency. 
-input_image = Image.open('input_image.jpg')
+input_image = Image.open('backgrounds/input_image.jpg')
 
 # Convert the input image to a numpy array. The image doesn't support transparency.
 # input_array.shape: (1080, 1920, 3) → (Height, Width, [R, G, B]) 
