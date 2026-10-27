@@ -159,7 +159,7 @@ Same live segmentation as Step 2, but instead of a solid color, you're
 composited onto a looping background *video*. Look for the `CUSTOMIZE HERE`
 comment near the top of `selfie_you.py` and set `BG_VIDEO_SOURCE` to either:
 
-- a local video file path (i.e. `backgrounds/background.mp4`), or
+- a local video file path (i.e. `backgrounds/video.mp4`), or
 - a YouTube link (i.e. `https://www.youtube.com/watch?v=...`)
 
 For YouTube links, `yt-dlp` downloads the clip to a temp file the first time

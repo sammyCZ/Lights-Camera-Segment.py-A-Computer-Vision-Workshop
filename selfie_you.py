@@ -14,8 +14,8 @@ mp_selfie_segmentation = mp.solutions.selfie_segmentation
 '''
 CUSTOMIZE HERE. CHOOSE ANY YOUTUBE VIDEO OR INCLUDE A PATH TO YOUR OWN MP4 FILE
 '''
-# BG_VIDEO_SOURCE = 'https://www.youtube.com/watch?v=6eRzBNzVohc'
-BG_VIDEO_SOURCE = 'backgrounds/video.mp4'
+BG_VIDEO_SOURCE = 'https://www.youtube.com/watch?v=6eRzBNzVohc'
+# BG_VIDEO_SOURCE = 'backgrounds/video.mp4'
 
 def resolve_background_source(source):
     if not source.startswith(('http://', 'https://')):
